@@ -97,7 +97,9 @@ button {
   top: 0;
   z-index: 20;
   isolation: isolate;
-  background: var(--color-surface);
+  background: rgba(255, 251, 245, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   box-shadow:
     0 1px 0 rgba(246, 195, 126, 0.2),
     0 10px 30px var(--color-shadow);
@@ -130,9 +132,7 @@ button {
   position: relative;
   z-index: 2;
   border-bottom: 1px solid rgba(239, 189, 118, 0.2);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 207, 145, 0.32), transparent 62%),
-    linear-gradient(180deg, rgba(255, 250, 241, 0.96) 0%, rgba(255, 254, 251, 0.98) 100%);
+  background: transparent;
 }
 
 .topbar__inner {
@@ -231,7 +231,7 @@ button {
 .navbar {
   position: relative;
   z-index: 2;
-  background: var(--color-surface);
+  background: transparent;
 }
 
 .navbar__inner {
@@ -421,42 +421,40 @@ button {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-color: #fffaf4;
-  padding: 78px 0 82px;
+  background-color: #fef3e8;
+  padding: 100px 0;
+  min-height: 750px;
+  display: flex;
+  align-items: center;
 }
 
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../images/hero-background-tanzy-stage.png");
+  background-image: url("../images/hero-banner-v2.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   background-position: center right;
   z-index: -2;
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(255, 250, 243, 0.98) 0%, rgba(255, 250, 243, 0.94) 29%, rgba(255, 250, 243, 0.66) 47%, rgba(255, 250, 243, 0.16) 66%, rgba(255, 250, 243, 0) 78%);
-  z-index: -1;
+  display: none;
 }
 
 .hero__inner {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 680px) minmax(0, 1fr);
   align-items: center;
   gap: clamp(1.5rem, 3vw, 3.2rem);
 }
 
 .hero__content {
   position: relative;
-  width: min(100%, 430px);
+  width: min(100%, 680px);
   padding-block: 0.4rem;
 }
 
@@ -474,18 +472,24 @@ button {
 }
 
 .hero__title-main {
-  font-size: clamp(1.76rem, 3.35vw, 2.3rem);
-  font-weight: 500;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   color: #2f2620;
 }
 
+@media (min-width: 1024px) {
+  .hero__title-main {
+    white-space: nowrap;
+  }
+}
+
 .hero__title-accent {
-  margin-top: 0.34rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.38rem);
-  font-weight: 400;
+  margin-top: 0.1rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  font-weight: 700;
   line-height: 0.95;
   color: #ef7d12;
 }
@@ -586,16 +590,27 @@ button {
 }
 
 .hero__trust {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-top: 0.9rem;
+  margin-top: 1.5rem;
 }
 
-.hero__trust-avatars {
-  width: 104px;
-  height: auto;
-  flex-shrink: 0;
+.hero__trust-avatars-group {
+  display: flex;
+}
+
+.hero__trust-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #fffaf4;
+  object-fit: cover;
+  margin-left: -12px;
+}
+
+.hero__trust-avatar:first-child {
+  margin-left: 0;
 }
 
 .hero__trust-copy {
@@ -698,11 +713,11 @@ button {
 .section-heading::after {
   content: "";
   display: block;
-  width: 82px;
-  height: 5px;
+  width: 130px;
+  height: 14px;
   margin: 13px auto 0;
-  border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, rgba(255, 145, 29, 0) 0%, #ff8a19 20%, #ff8a19 80%, rgba(255, 145, 29, 0) 100%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20'%3E%3Cpath d='M 10,15 Q 80,0 150,10 T 290,12' fill='none' stroke='%23ff8a19' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
 }
 
 .usage {
@@ -758,7 +773,7 @@ button {
   overflow: hidden;
   scroll-margin-top: 142px;
   background-image:
-    linear-gradient(90deg, #fffdf9 0%, #fffdf9 38%, rgba(255, 253, 249, 0.88) 48%, rgba(255, 253, 249, 0.28) 58%, rgba(255, 253, 249, 0) 68%),
+    linear-gradient(to left, rgba(255, 253, 249, 0) 0%, rgba(255, 253, 249, 0) 350px, rgba(255, 253, 249, 0.9) 550px, #fffdf9 700px),
     url("../images/why-product.png"),
     linear-gradient(180deg, #fffaf3 0%, #fffdf9 100%);
   background-repeat: no-repeat;
@@ -1963,6 +1978,8 @@ button {
 
   .hero {
     padding: 48px 0;
+    min-height: auto;
+    display: block;
   }
 
   .usage__grid {
@@ -3482,8 +3499,8 @@ button {
 .section-heading--left::after {
   margin-left: 0;
   margin-right: auto;
-  width: 68px;
-  height: 4px;
+  width: 90px;
+  height: 10px;
 }
 
 .related__grid {
