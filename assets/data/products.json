@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sp1",
+    "name": "Sốt Phô Mai Nguyên Bản Tanzy Foods - Chai 500g",
+    "image": "./assets/images/product-tanzy-pho-mai.png",
+    "price": 89000,
+    "originalPrice": 120000,
+    "sold": 1200,
+    "rating": 4.9,
+    "link": "https://shopee.vn/tanzyfoods"
+  },
+  {
+    "id": "sp2",
+    "name": "Sốt Phô Mai Cay Tanzy Foods - Chai 500g",
+    "image": "./assets/images/product-tanzy-pho-mai-cay.png",
+    "price": 95000,
+    "originalPrice": 130000,
+    "sold": 850,
+    "rating": 4.8,
+    "link": "https://shopee.vn/tanzyfoods"
+  },
+  {
+    "id": "sp3",
+    "name": "Sốt Trứng Muối Tanzy Foods - Gói 250g",
+    "image": "./assets/images/product-tanzy-trung-muoi.png",
+    "price": 75000,
+    "originalPrice": 99000,
+    "sold": 3400,
+    "rating": 5.0,
+    "link": "https://shopee.vn/tanzyfoods"
+  }
+]

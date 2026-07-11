@@ -16,62 +16,232 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <style id="toonhub-style">
+        #toonhub-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            transition: background-color 650ms cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Geomanist', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        #toonhub-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .toonhub-grain {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            background-repeat: repeat;
+        }
+
+        .toonhub-big-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            user-select: none;
+            z-index: 2;
+            top: 45%;
+            transform: translateY(-50%);
+            font-family: 'Geomanist', sans-serif;
+            font-size: clamp(90px, 25vw, 520px);
+            font-weight: 900;
+            color: #ffffff;
+            opacity: 0.15;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .toonhub-brand {
+            position: absolute;
+            top: 24px;
+            left: 16px;
+            z-index: 60;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #ffffff;
+            opacity: 0.9;
+            letter-spacing: 0.18em;
+        }
+
+        .toonhub-carousel {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+        }
+
+        .toonhub-carousel-item {
+            position: absolute;
+            aspect-ratio: 0.6 / 1;
+            transition: transform 650ms cubic-bezier(0.4, 0, 0.2, 1), 
+                        filter 650ms cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 650ms cubic-bezier(0.4, 0, 0.2, 1), 
+                        left 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                        height 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                        bottom 650ms cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, filter, opacity;
+        }
+
+        .toonhub-carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: bottom center;
+            pointer-events: none;
+        }
+
+        .toonhub-nav-container {
+            position: absolute;
+            bottom: 24px;
+            left: 16px;
+            z-index: 60;
+            max-width: 320px;
+        }
+
+        .toonhub-nav-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 12px;
+            font-size: 24px;
+            color: #ffffff;
+            font-family: 'Geomanist', sans-serif;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .toonhub-nav-desc {
+            display: none;
+            font-size: 14px;
+            color: #ffffff;
+            opacity: 0.95;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-family: 'Geomanist', sans-serif;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+        }
+
+        .toonhub-nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .toonhub-nav-btn {
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            transition: transform 150ms, background-color 150ms;
+            outline: none;
+        }
+
+        .toonhub-nav-btn:hover {
+            transform: scale(1.08);
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .toonhub-nav-btn svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .toonhub-discover-link {
+            position: absolute;
+            bottom: 24px;
+            right: 16px;
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Geomanist', sans-serif;
+            font-size: clamp(18px, 3vw, 32px);
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            text-transform: uppercase;
+            transition: opacity 200ms, transform 200ms;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .toonhub-discover-link:hover {
+            opacity: 1;
+        }
+
+        .toonhub-discover-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .toonhub-brand {
+                left: 32px;
+            }
+            .toonhub-nav-container {
+                bottom: 80px;
+                left: 96px;
+                max-width: 440px;
+            }
+            .toonhub-nav-title {
+                margin-bottom: 16px;
+                font-size: clamp(32px, 4vw, 48px);
+            }
+            .toonhub-nav-desc {
+                display: block;
+                font-size: 16px;
+                margin-bottom: 24px;
+            }
+            .toonhub-nav-btn {
+                width: 64px;
+                height: 64px;
+            }
+            .toonhub-discover-link {
+                bottom: 80px;
+                right: 96px;
+            }
+            .toonhub-discover-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
   </head>
   <body>
     <header class="site-header" data-header>
-      <div class="topbar">
-        <div class="container topbar__inner">
-          <div class="topbar__left">
-            <a class="topbar__lead" href="#trang-chu" aria-label="Sốt Trio Trứng Muối">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="1.5" y="1.5" width="21" height="21" rx="5.5" fill="#3C342D" />
-                <circle cx="12" cy="8.9" r="3.55" fill="#FF9A1F" />
-                <path
-                  d="M7.15 14.85C7.15 11.92 9.41 9.82 12.18 9.82C14.94 9.82 17.2 11.92 17.2 14.85V15.42C17.2 16.7 16.16 17.75 14.87 17.75H9.48C8.19 17.75 7.15 16.7 7.15 15.42V14.85Z"
-                  fill="#FFF7EC"
-                />
-                <path
-                  d="M8.88 14.95C8.88 13.14 10.26 11.79 12.18 11.79C14.09 11.79 15.47 13.14 15.47 14.95V15.03H8.88V14.95Z"
-                  fill="#FF9A1F"
-                />
-              </svg>
-            </a>
 
-            <ul class="topbar__features" aria-label="Điểm nổi bật">
-              <li class="topbar__feature">
-                <span class="icon-badge" aria-hidden="true">
-                  <i class="fa-solid fa-egg"></i>
-                </span>
-                <span>100% trứng muối thật</span>
-              </li>
-              <li class="topbar__feature">
-                <span class="icon-badge" aria-hidden="true">
-                  <i class="fa-solid fa-leaf"></i>
-                </span>
-                <span>Không chất bảo quản</span>
-              </li>
-              <li class="topbar__feature">
-                <span class="icon-badge" aria-hidden="true">
-                  <i class="fa-solid fa-shield-halved"></i>
-                </span>
-                <span>An toàn - Thơm ngon</span>
-              </li>
-            </ul>
-          </div>
-
-          <a class="topbar__cart" href="./lien-he.html" aria-label="Liên hệ"><span>Liên hệ</span></a>
-        </div>
-      </div>
 
       <div class="navbar">
-        <div class="container navbar__inner">
+        <div class="navbar__inner">
           <a class="brand" href="#trang-chu" aria-label="Tanzy Foods">
             <img
               src="./assets/images/logo-tanzy-foods.png"
@@ -79,7 +249,7 @@
             />
           </a>
 
-          <a class="navbar__cart-mobile" href="./lien-he.html" aria-label="Liên hệ">Liên hệ</a>
+
 
           <button
             class="menu-toggle"
@@ -99,70 +269,40 @@
             <a class="nav__link" href="./cong-dung.html">Công dụng</a>
             </nav>
 
-          <a class="button button--primary navbar__cta" href="./lien-he.html">Liên hệ</a>
+
         </div>
       </div>
     </header>
 
     <main class="page-main">
-      <section class="hero" id="hero-banner">
-        <div class="container hero__inner">
-          <div class="hero__content">
-            <h1 class="hero__title">
-              <span class="hero__title-main">BÉO NGẬY TỰ NHIÊN</span>
-              <span class="hero__title-accent">Đậm đà mê ngay!</span>
-            </h1>
+      <section id="hero-banner" style="padding: 0; margin: 0; width: 100%;">
+          <div id="toonhub-wrapper">
+              <div id="toonhub-container">
+                  <div class="toonhub-grain"></div>
+                  <div class="toonhub-big-text">TANZY</div>
 
-            <p class="hero__copy">
-              Sốt Trio Trứng Muối mang vị béo ngậy đặc trưng đến từng món ăn. Làm từ 100% trứng muối tươi, không chất bảo quản.
-            </p>
+                  
+                  <div class="toonhub-carousel" id="toonhub-carousel"></div>
 
-            <ul class="hero__highlights" aria-label="Đặc điểm nổi bật">
-              <li class="hero__highlight">
-                <span class="hero__highlight-icon" aria-hidden="true">
-                  <i class="fa-solid fa-egg"></i>
-                </span>
-                <strong>100%</strong>
-                <span>Trứng muối thật</span>
-              </li>
+                  <div class="toonhub-nav-container">
+                      <p class="toonhub-nav-title">SỐT PHÔ MAI CAY</p>
+                      <p class="toonhub-nav-desc">Béo ngậy tự nhiên - Đậm đà mê ngay! Trải nghiệm vị phô mai béo ngậy kết hợp cùng độ cay nồng hoàn hảo, đánh thức mọi giác quan của bạn.</p>
+                      <div class="toonhub-nav-buttons">
+                          <button class="toonhub-nav-btn" onclick="toonhubNavigate('prev')" aria-label="Previous">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                          </button>
+                          <button class="toonhub-nav-btn" onclick="toonhubNavigate('next')" aria-label="Next">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                          </button>
+                      </div>
+                  </div>
 
-              <li class="hero__highlight">
-                <span class="hero__highlight-icon" aria-hidden="true">
-                  <i class="fa-solid fa-leaf"></i>
-                </span>
-                <strong>Không</strong>
-                <span>Chất bảo quản</span>
-              </li>
-
-              <li class="hero__highlight">
-                <span class="hero__highlight-icon" aria-hidden="true">
-                  <i class="fa-solid fa-bolt"></i>
-                </span>
-                <strong>Tiện lợi</strong>
-                <span>Dùng ngay</span>
-              </li>
-            </ul>
-
-            <a class="button button--primary hero__button" href="./lien-he.html">
-              <span>Liên hệ</span>
-              <span class="hero__button-arrow" aria-hidden="true">
-                <i class="fa-solid fa-arrow-right"></i>
-              </span>
-            </a>
-
-            <div class="hero__trust">
-              <div class="hero__trust-avatars-group" aria-hidden="true">
-                <img class="hero__trust-avatar" src="./assets/images/review-avatar-1.png" alt="" />
-                <img class="hero__trust-avatar" src="./assets/images/review-avatar-2.png" alt="" />
-                <img class="hero__trust-avatar" src="./assets/images/review-avatar-3.png" alt="" />
+                  <a href="#" class="toonhub-discover-link">
+                          MUA NGAY
+                          <svg class="toonhub-discover-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
               </div>
-              <p class="hero__trust-copy">10.000+ khách hàng tin dùng</p>
-            </div>
           </div>
-
-          <!-- hero__visual removed as requested -->
-
-        </div>
       </section>
 
       <section class="usage section-padding" id="cong-dung">
@@ -525,7 +665,256 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script id="toonhub-script">
+        const TOONHUB_IMAGES = [
+            { 
+              src: './assets/images/sot-pho-mai-cay-final.png', 
+              bgImage: './assets/images/bg_spicy_cheese.png', 
+              title: 'SỐT PHÔ MAI CAY',
+              desc: 'Béo ngậy tự nhiên - Đậm đà mê ngay! Trải nghiệm vị phô mai béo ngậy kết hợp cùng độ cay nồng hoàn hảo, đánh thức mọi giác quan của bạn.',
+              decors: [
+                  { src: './assets/images/usage-fried.png', style: 'top: 20%; left: 8%; width: min(150px, 20vw); filter: blur(4px); opacity: 0; transform: rotate(-20deg) scale(0.8); transition: all 800ms ease;' },
+                  { src: './assets/images/products-idea-chicken.png', style: 'bottom: 25%; right: 6%; width: min(180px, 25vw); filter: blur(3px); opacity: 0; transform: rotate(15deg) scale(0.8); transition: all 800ms ease 100ms;' }
+              ]
+            },
+            { 
+              src: './assets/images/sot-pho-mai-final.png', 
+              bgImage: './assets/images/bg_cheese.png', 
+              title: 'SỐT PHÔ MAI',
+              desc: 'Sốt phô mai nguyên bản đậm đà, thơm béo ngậy. Phủ hoàn hảo lên mọi món ăn, biến những bữa ăn thường ngày thành đại tiệc thực sự.',
+              decors: [
+                  { src: './assets/images/usage-bread.png', style: 'top: 15%; right: 12%; width: min(140px, 18vw); filter: blur(3px); opacity: 0; transform: rotate(25deg) scale(0.8); transition: all 800ms ease;' },
+                  { src: './assets/images/products-idea-dip.png', style: 'bottom: 18%; left: 6%; width: min(200px, 28vw); filter: blur(4px); opacity: 0; transform: rotate(-10deg) scale(0.8); transition: all 800ms ease 100ms;' }
+              ]
+            },
+            { 
+              src: './assets/images/sot-trung-muoi-final.png', 
+              bgImage: './assets/images/bg_salted_egg.png', 
+              title: 'SỐT TRỨNG MUỐI',
+              desc: 'Vị mặn mặn bùi bùi đặc trưng của trứng muối tinh tuyển hoà quyện cùng kết cấu sánh mịn. Lựa chọn tuyệt vời cho các tín đồ sành ăn.',
+              decors: [
+                  { src: './assets/images/usage-seafood.png', style: 'top: 25%; left: 10%; width: min(160px, 22vw); filter: blur(4px); opacity: 0; transform: rotate(-15deg) scale(0.8); transition: all 800ms ease;' },
+                  { src: './assets/images/products-idea-salad.png', style: 'bottom: 12%; right: 8%; width: min(190px, 26vw); filter: blur(3px); opacity: 0; transform: rotate(10deg) scale(0.8); transition: all 800ms ease 100ms;' }
+              ]
+            }
+        ];
+
+        TOONHUB_IMAGES.forEach(imgData => {
+            const img = new Image();
+            img.src = imgData.src;
+        });
+
+        let toonhubActiveIndex = 0;
+        let toonhubIsAnimating = false;
+        let toonhubIsMobile = window.innerWidth < 640;
+        
+        const toonhubWrapper = document.getElementById('toonhub-wrapper');
+        const toonhubCarousel = document.getElementById('toonhub-carousel');
+        
+        const toonhubItemElements = TOONHUB_IMAGES.map((imgData, i) => {
+            const div = document.createElement('div');
+            div.className = 'toonhub-carousel-item';
+            const img = document.createElement('img');
+            img.src = imgData.src;
+            img.alt = `Product ${i+1}`;
+            img.draggable = false;
+            div.appendChild(img);
+            if (toonhubCarousel) toonhubCarousel.appendChild(div);
+            return div;
+        });
+
+        function toonhubGetStyles(role, isMobile) {
+            switch(role) {
+                case 'center':
+                    return { transform: 'translateX(-50%) perspective(1200px) rotateX(-12deg) scale(1)', filter: 'blur(0px) drop-shadow(0 40px 25px rgba(0,0,0,0.25))', opacity: '1', zIndex: '20', left: '50%', height: isMobile ? '55%' : '84%', bottom: isMobile ? '25%' : '3%' };
+                case 'left':
+                    return { transform: 'translateX(-50%) perspective(1200px) rotateX(-10deg) scale(1)', filter: 'blur(1px) drop-shadow(0 25px 15px rgba(0,0,0,0.15))', opacity: '0.9', zIndex: '10', left: isMobile ? '25%' : '28%', height: isMobile ? '32%' : '44%', bottom: isMobile ? '32%' : '10%' };
+                case 'right':
+                    return { transform: 'translateX(-50%) perspective(1200px) rotateX(-10deg) scale(1)', filter: 'blur(1px) drop-shadow(0 25px 15px rgba(0,0,0,0.15))', opacity: '0.9', zIndex: '10', left: isMobile ? '75%' : '72%', height: isMobile ? '32%' : '44%', bottom: isMobile ? '32%' : '10%' };
+            }
+        }
+
+        function toonhubUpdateDOM() {
+            if (!toonhubWrapper) return;
+            const currentProduct = TOONHUB_IMAGES[toonhubActiveIndex];
+
+            let bgLayerContainer = document.getElementById('toonhub-bg-layers');
+            if (!bgLayerContainer) {
+                bgLayerContainer = document.createElement('div');
+                bgLayerContainer.id = 'toonhub-bg-layers';
+                bgLayerContainer.style.cssText = 'position: absolute; inset: 0; z-index: 0; pointer-events: none;';
+                toonhubWrapper.insertBefore(bgLayerContainer, toonhubWrapper.firstChild);
+                
+                TOONHUB_IMAGES.forEach((prod, idx) => {
+                    const layer = document.createElement('div');
+                    layer.id = `toonhub-bg-layer-${idx}`;
+                    layer.style.cssText = `position: absolute; inset: 0; background-image: url('${prod.bgImage}'); background-size: cover; background-position: center; transition: opacity 800ms ease; opacity: ${idx === toonhubActiveIndex ? 1 : 0};`;
+                    bgLayerContainer.appendChild(layer);
+                });
+            } else {
+                TOONHUB_IMAGES.forEach((prod, idx) => {
+                    const layer = document.getElementById(`toonhub-bg-layer-${idx}`);
+                    if (layer) layer.style.opacity = idx === toonhubActiveIndex ? 1 : 0;
+                });
+            }
+
+            let decorsContainer = document.getElementById('toonhub-decors');
+            if (!decorsContainer) {
+                decorsContainer = document.createElement('div');
+                decorsContainer.id = 'toonhub-decors';
+                decorsContainer.style.cssText = 'position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: hidden;';
+                const toonhubContainer = document.getElementById('toonhub-container');
+                if (toonhubContainer) toonhubContainer.appendChild(decorsContainer);
+            }
+            decorsContainer.innerHTML = '';
+            if (currentProduct.decors) {
+                currentProduct.decors.forEach(decor => {
+                    const img = document.createElement('img');
+                    img.src = decor.src;
+                    img.style.cssText = decor.style + ' position: absolute; z-index: 5;';
+                    decorsContainer.appendChild(img);
+                    setTimeout(() => {
+                        img.style.opacity = '0.6'; 
+                        img.style.transform = img.style.transform.replace('scale(0.8)', 'scale(1)');
+                    }, 50);
+                });
+            }
+            
+            const titleEl = document.querySelector('.toonhub-nav-title');
+            const descEl = document.querySelector('.toonhub-nav-desc');
+            if (titleEl) titleEl.textContent = currentProduct.title;
+            if (descEl) descEl.textContent = currentProduct.desc;
+            
+            const center = toonhubActiveIndex;
+            const left = (toonhubActiveIndex + 2) % 3;
+            const right = (toonhubActiveIndex + 1) % 3;
+            
+            const roles = [];
+            roles[center] = 'center';
+            roles[left] = 'left';
+            roles[right] = 'right';
+            
+            toonhubItemElements.forEach((el, index) => {
+                const role = roles[index];
+                const styles = toonhubGetStyles(role, toonhubIsMobile);
+                el.style.transform = styles.transform;
+                el.style.filter = styles.filter;
+                el.style.opacity = styles.opacity;
+                el.style.zIndex = styles.zIndex;
+                el.style.left = styles.left;
+                el.style.height = styles.height;
+                el.style.bottom = styles.bottom;
+            });
+        }
+
+        function toonhubNavigate(direction) {
+            if (toonhubIsAnimating) return;
+            toonhubIsAnimating = true;
+            
+            if (direction === 'next') {
+                toonhubActiveIndex = (toonhubActiveIndex + 1) % 3;
+            } else {
+                toonhubActiveIndex = (toonhubActiveIndex + 2) % 3;
+            }
+            
+            toonhubUpdateDOM();
+            
+            setTimeout(() => {
+                toonhubIsAnimating = false;
+            }, 650);
+        }
+
+        let toonhubTouchStartX = 0;
+        let toonhubTouchEndX = 0;
+        let toonhubIsDragging = false;
+        
+        toonhubWrapper.addEventListener('touchstart', e => {
+            toonhubTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        toonhubWrapper.addEventListener('touchend', e => {
+            toonhubTouchEndX = e.changedTouches[0].screenX;
+            toonhubHandleSwipe();
+        }, { passive: true });
+        
+        toonhubWrapper.addEventListener('mousedown', e => {
+            // Ignore if clicking on a button or link
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            toonhubIsDragging = true;
+            toonhubTouchStartX = e.clientX;
+            toonhubWrapper.style.cursor = 'grabbing';
+        });
+        
+        toonhubWrapper.addEventListener('mousemove', e => {
+            if (!toonhubIsDragging) return;
+        });
+        
+        toonhubWrapper.addEventListener('mouseup', e => {
+            if (!toonhubIsDragging) return;
+            toonhubIsDragging = false;
+            toonhubTouchEndX = e.clientX;
+            toonhubWrapper.style.cursor = 'grab';
+            toonhubHandleSwipe();
+        });
+        
+        toonhubWrapper.addEventListener('mouseleave', () => {
+            if (toonhubIsDragging) {
+                toonhubIsDragging = false;
+                toonhubWrapper.style.cursor = 'grab';
+            }
+        });
+        
+        function toonhubHandleSwipe() {
+            const threshold = 50;
+            const diff = toonhubTouchEndX - toonhubTouchStartX;
+            
+            if (diff > threshold) {
+                toonhubNavigate('prev');
+            } else if (diff < -threshold) {
+                toonhubNavigate('next');
+            }
+        }
+
+        toonhubWrapper.style.cursor = 'grab';
+        toonhubUpdateDOM();
+
+        window.addEventListener('resize', () => {
+            const currentIsMobile = window.innerWidth < 640;
+            if (currentIsMobile !== toonhubIsMobile) {
+                toonhubIsMobile = currentIsMobile;
+                toonhubUpdateDOM();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', toonhubUpdateDOM);
+        toonhubUpdateDOM();
+
+
+    </script>
     
+    <!-- GSAP sliding tab effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+          
+          // Pin the hero banner so the next section (.usage) slides over it like a tab
+          ScrollTrigger.create({
+            trigger: "#hero-banner",
+            start: "top top",
+            end: "+=100%",
+            pin: true,
+            pinSpacing: false,
+            // Optional: slight parallax effect on the banner contents
+            animation: gsap.to('#toonhub-wrapper', { y: '20%', opacity: 0.5, ease: 'none' }),
+            scrub: true
+          });
+        }
+      });
+    </script>
+
     <!-- Polyfill for js-avatar -->
     <script>
       var module = { exports: {} };

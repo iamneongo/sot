@@ -18,51 +18,15 @@
   </head>
   <body>
     <header class="site-header" data-header>
-      <div class="topbar">
-        <div class="container topbar__inner">
-          <div class="topbar__left">
-            <a class="topbar__lead" href="./index.html" aria-label="Tanzy Foods">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="1.5" y="1.5" width="21" height="21" rx="5.5" fill="#3C342D" />
-                <circle cx="12" cy="8.9" r="3.55" fill="#FF9A1F" />
-                <path d="M7.15 14.85C7.15 11.92 9.41 9.82 12.18 9.82C14.94 9.82 17.2 11.92 17.2 14.85V15.42C17.2 16.7 16.16 17.75 14.87 17.75H9.48C8.19 17.75 7.15 16.7 7.15 15.42V14.85Z" fill="#FFF7EC" />
-                <path d="M8.88 14.95C8.88 13.14 10.26 11.79 12.18 11.79C14.09 11.79 15.47 13.14 15.47 14.95V15.03H8.88V14.95Z" fill="#FF9A1F" />
-              </svg>
-            </a>
-
-            <ul class="topbar__features" aria-label="Điểm nổi bật">
-              <li class="topbar__feature">
-                <span class="icon-badge" aria-hidden="true">
-                  <i class="fa-solid fa-egg"></i>
-                </span>
-                <span>100% trứng muối thật</span>
-              </li>
-              <li class="topbar__feature">
-                <span class="icon-badge" aria-hidden="true">
-                  <i class="fa-solid fa-leaf"></i>
-                </span>
-                <span>Không chất bảo quản</span>
-              </li>
-              <li class="topbar__feature">
-                <span class="icon-badge" aria-hidden="true">
-                  <i class="fa-solid fa-shield-halved"></i>
-                </span>
-                <span>An toàn - Thơm ngon</span>
-              </li>
-            </ul>
-          </div>
-
-          <a class="topbar__cart" href="./lien-he.html" aria-label="Liên hệ"><span>Liên hệ</span></a>
-        </div>
-      </div>
+      
 
       <div class="navbar">
-        <div class="container navbar__inner">
+        <div class="navbar__inner">
           <a class="brand" href="./index.html" aria-label="Tanzy Foods">
             <img src="./assets/images/logo-tanzy-foods.png" alt="Tanzy Foods" />
           </a>
 
-          <a class="navbar__cart-mobile" href="./lien-he.html" aria-label="Liên hệ">Liên hệ</a>
+          
 
           <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-menu-toggle>
             <span class="sr-only">Mở menu</span>
@@ -76,7 +40,7 @@
             <a class="nav__link" href="./cong-dung.html">Công dụng</a>
             </nav>
 
-          <a class="button button--primary navbar__cta" href="./lien-he.html">Liên hệ</a>
+          
         </div>
       </div>
     </header>
@@ -370,5 +334,42 @@
     </footer>
 
     <script src="./assets/js/main.js"></script>
+    <script>
+      // Simulate fetching products from Shopee (using local JSON due to CORS/Anti-bot restrictions on client-side API)
+      document.addEventListener('DOMContentLoaded', async () => {
+        const grid = document.getElementById('shopee-products-grid');
+        if (!grid) return;
+
+        try {
+          const response = await fetch('./assets/data/products.json');
+          if (!response.ok) throw new Error('Network response was not ok');
+          const products = await response.json();
+          
+          grid.innerHTML = ''; // Clear loading text
+          
+          products.forEach(product => {
+            const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price);
+            
+            const article = document.createElement('article');
+            article.className = 'product-card';
+            article.innerHTML = `
+              <a class="product-card__media" href="${product.link}" target="_blank" rel="noopener noreferrer">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='./assets/images/product-tanzy-pho-mai.png'" />
+              </a>
+              <div class="product-card__body">
+                <h2>${product.name}</h2>
+                <p style="color: #e53935; font-weight: 700; margin-top: 0.5rem; font-size: 1.1rem;">${formattedPrice}</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">Đã bán: ${product.sold} | ⭐ ${product.rating}</p>
+                <a href="${product.link}" target="_blank" class="btn btn--primary" style="margin-top: 1rem; width: 100%; padding: 0.6rem; border-radius: 8px; text-align: center; display: inline-block;">Mua trên Shopee</a>
+              </div>
+            `;
+            grid.appendChild(article);
+          });
+        } catch (error) {
+          console.error('Lỗi khi tải sản phẩm:', error);
+          grid.innerHTML = '<p style="text-align: center; width: 100%; grid-column: 1 / -1; color: red;">Không thể tải sản phẩm từ Shopee. Vui lòng thử lại sau.</p>';
+        }
+      });
+    </script>
   </body>
 </html>
