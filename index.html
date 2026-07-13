@@ -960,133 +960,90 @@
       document.addEventListener('DOMContentLoaded', () => {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
-
-          // Utility: Set perspective for 3D transforms
-          gsap.set(".usage__grid, .reviews__carousel", { perspective: 1000 });
           
-          // 1. Hero Banner Pinning & Parallax Scrubbing
-          // Create a timeline that scrubs as we scroll
-          const heroTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#hero-banner",
-              start: "top top",
-              end: "+=120%",
-              pin: true,
-              pinSpacing: false,
-              scrub: 1 // smooth scrubbing
-            }
+          // 1. Hero Banner Pinning & Parallax
+          ScrollTrigger.create({
+            trigger: "#hero-banner",
+            start: "top top",
+            end: "+=100%",
+            pin: true,
+            pinSpacing: false,
+            animation: gsap.to('#toonhub-wrapper', { y: '20%', opacity: 0.5, ease: 'none' }),
+            scrub: true
           });
-          // Scale down the whole wrapper slightly and fade it out
-          heroTl.to('#toonhub-wrapper', { scale: 0.85, opacity: 0, ease: 'none', transformOrigin: "center top" }, 0);
-          // Move decors in parallax
-          heroTl.to('#toonhub-decors', { y: -150, rotate: 15, ease: 'none' }, 0);
 
-          // 2. Usage Cards - 3D Spring
+          // 2. Usage Cards Stagger Fade-Up
           gsap.from(".usage-card", {
             scrollTrigger: {
               trigger: ".usage",
               start: "top 75%"
             },
-            rotationY: 90,
-            scale: 0.5,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: "back.out(1.5)",
-            transformOrigin: "center left"
-          });
-
-          // 3. Why Section - Skew & Mask Reveal
-          // Title clip path reveal
-          gsap.from(".why__title span", {
-            scrollTrigger: {
-              trigger: ".why",
-              start: "top 80%"
-            },
             y: 50,
             opacity: 0,
-            clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out"
-          });
-          
-          gsap.from(".why__item", {
-            scrollTrigger: {
-              trigger: ".why",
-              start: "top 70%"
-            },
-            x: -100,
-            skewX: -20,
-            opacity: 0,
-            duration: 0.8,
+            duration: 0.6,
             stagger: 0.15,
             ease: "power2.out"
           });
 
-          // Mask reveal for image
-          gsap.set(".why__image img", { clipPath: "circle(0% at 50% 50%)" });
-          gsap.to(".why__image img", {
+          // 3. Why Section - Content Stagger & Image Zoom
+          gsap.from(".why__item", {
+            scrollTrigger: {
+              trigger: ".why",
+              start: "top 75%"
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
+          });
+          gsap.from(".why__image img", {
             scrollTrigger: {
               trigger: ".why",
               start: "top 60%"
             },
-            clipPath: "circle(150% at 50% 50%)",
-            duration: 1.5,
-            ease: "power2.inOut"
+            scale: 0.85,
+            opacity: 0,
+            duration: 0.8,
+            ease: "back.out(1.2)"
           });
 
-          // 4. Reviews - 3D Flip Down
+          // 4. Reviews Stagger Fade-Up
           gsap.from(".review-card", {
             scrollTrigger: {
               trigger: ".reviews",
               start: "top 75%"
             },
-            rotationX: -90,
-            y: -50,
+            y: 40,
             opacity: 0,
-            duration: 1,
+            duration: 0.6,
             stagger: 0.15,
-            transformOrigin: "top center",
-            ease: "back.out(1.2)"
+            ease: "power2.out"
           });
 
-          // 5. Shop CTA Hero Parallax & Text Reveal
-          gsap.from(".shop-cta__image--food img", {
-            scrollTrigger: {
-              trigger: ".shop-cta__hero",
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1
-            },
-            y: 100,
-            scale: 1.2,
-            ease: "none"
-          });
+          // 5. Shop CTA Hero & Service Strip
           gsap.from(".shop-cta__content > *", {
             scrollTrigger: {
               trigger: ".shop-cta__hero",
-              start: "top 70%"
+              start: "top 80%"
             },
             y: 30,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.6,
             stagger: 0.15,
-            ease: "power3.out"
+            ease: "power2.out"
           });
-
-          // Elastic Pop for Service Strip
           gsap.from(".service-strip__item", {
             scrollTrigger: {
               trigger: ".service-strip",
-              start: "top 85%"
+              start: "top 90%"
             },
-            scale: 0,
-            rotation: -15,
+            scale: 0.9,
+            y: 20,
             opacity: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: "elastic.out(1, 0.5)"
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out"
           });
 
           // 6. FAQ Stagger Fade-Up
@@ -1095,14 +1052,14 @@
               trigger: ".faq",
               start: "top 80%"
             },
-            x: 50,
+            y: 20,
             opacity: 0,
-            duration: 0.7,
+            duration: 0.5,
             stagger: 0.1,
-            ease: "power3.out"
+            ease: "power2.out"
           });
 
-          // 7. Contact Section - Card Slide In
+          // 7. Contact Section
           gsap.from(".contact__content > *", {
             scrollTrigger: {
               trigger: ".contact",
@@ -1117,14 +1074,13 @@
           gsap.from(".contact-card", {
             scrollTrigger: {
               trigger: ".contact",
-              start: "top 75%"
+              start: "top 70%"
             },
-            x: 100,
-            scale: 0.9,
+            x: 30,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.6,
             stagger: 0.15,
-            ease: "back.out(1.2)"
+            ease: "power2.out"
           });
         }
       });
