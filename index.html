@@ -961,16 +961,126 @@
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
           
-          // Pin the hero banner so the next section (.usage) slides over it like a tab
+          // 1. Hero Banner Pinning & Parallax
           ScrollTrigger.create({
             trigger: "#hero-banner",
             start: "top top",
             end: "+=100%",
             pin: true,
             pinSpacing: false,
-            // Optional: slight parallax effect on the banner contents
             animation: gsap.to('#toonhub-wrapper', { y: '20%', opacity: 0.5, ease: 'none' }),
             scrub: true
+          });
+
+          // 2. Usage Cards Stagger Fade-Up
+          gsap.from(".usage-card", {
+            scrollTrigger: {
+              trigger: ".usage",
+              start: "top 75%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
+          });
+
+          // 3. Why Section - Content Stagger & Image Zoom
+          gsap.from(".why__item", {
+            scrollTrigger: {
+              trigger: ".why",
+              start: "top 75%"
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
+          });
+          gsap.from(".why__image img", {
+            scrollTrigger: {
+              trigger: ".why",
+              start: "top 60%"
+            },
+            scale: 0.85,
+            opacity: 0,
+            duration: 0.8,
+            ease: "back.out(1.2)"
+          });
+
+          // 4. Reviews Stagger Fade-Up
+          gsap.from(".review-card", {
+            scrollTrigger: {
+              trigger: ".reviews",
+              start: "top 75%"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
+          });
+
+          // 5. Shop CTA Hero & Service Strip
+          gsap.from(".shop-cta__content > *", {
+            scrollTrigger: {
+              trigger: ".shop-cta__hero",
+              start: "top 80%"
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
+          });
+          gsap.from(".service-strip__item", {
+            scrollTrigger: {
+              trigger: ".service-strip",
+              start: "top 90%"
+            },
+            scale: 0.9,
+            y: 20,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out"
+          });
+
+          // 6. FAQ Stagger Fade-Up
+          gsap.from(".faq-item", {
+            scrollTrigger: {
+              trigger: ".faq",
+              start: "top 80%"
+            },
+            y: 20,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out"
+          });
+
+          // 7. Contact Section
+          gsap.from(".contact__content > *", {
+            scrollTrigger: {
+              trigger: ".contact",
+              start: "top 80%"
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out"
+          });
+          gsap.from(".contact-card", {
+            scrollTrigger: {
+              trigger: ".contact",
+              start: "top 70%"
+            },
+            x: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
           });
         }
       });
