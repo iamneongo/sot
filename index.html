@@ -149,6 +149,21 @@
             gap: 12px;
         }
 
+        @keyframes toonhubFloat1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(4deg); }
+        }
+        @keyframes toonhubFloat2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(12px) rotate(-4deg); }
+        }
+        .toonhub-anim-float-1 {
+            animation: toonhubFloat1 4s ease-in-out infinite;
+        }
+        .toonhub-anim-float-2 {
+            animation: toonhubFloat2 5s ease-in-out infinite;
+        }
+
         .toonhub-nav-btn {
             width: 48px;
             height: 48px;
@@ -266,7 +281,7 @@
             <a class="nav__link nav__link--active" href="#trang-chu">Trang chủ</a>
             <a class="nav__link" href="./gioi-thieu.html">Giới thiệu</a>
             <a class="nav__link" href="./san-pham.html">Sản phẩm</a>
-            <a class="nav__link" href="./cong-dung.html">Công dụng</a>
+            <a class="nav__link" href="./lien-he.html">Liên hệ</a>
             </nav>
 
 
@@ -636,7 +651,6 @@
           <a href="#trang-chu">Trang chủ</a>
           <a href="./gioi-thieu.html">Giới thiệu</a>
           <a href="./san-pham.html">Sản phẩm</a>
-          <a href="./cong-dung.html">Công dụng</a>
           <a href="./lien-he.html">Liên hệ</a>
         </div>
 
@@ -673,8 +687,10 @@
               title: 'SỐT PHÔ MAI CAY',
               desc: 'Béo ngậy tự nhiên - Đậm đà mê ngay! Trải nghiệm vị phô mai béo ngậy kết hợp cùng độ cay nồng hoàn hảo, đánh thức mọi giác quan của bạn.',
               decors: [
-                  { src: './assets/images/usage-fried.png', style: 'top: 20%; left: 8%; width: min(150px, 20vw); filter: blur(4px); opacity: 0; transform: rotate(-20deg) scale(0.8); transition: all 800ms ease;' },
-                  { src: './assets/images/products-idea-chicken.png', style: 'bottom: 25%; right: 6%; width: min(180px, 25vw); filter: blur(3px); opacity: 0; transform: rotate(15deg) scale(0.8); transition: all 800ms ease 100ms;' }
+                  { src: 'https://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14087.png', style: 'top: 15%; left: 5%; width: min(160px, 20vw); filter: blur(1.5px) drop-shadow(0 10px 10px rgba(0,0,0,0.2)); opacity: 0; transform: rotate(-20deg) scale(0.8); transition: all 800ms ease;' },
+                  { src: 'https://pngimg.com/uploads/chili_pepper/chili_pepper_PNG31.png', style: 'bottom: 15%; right: 5%; width: min(180px, 25vw); filter: blur(1px) drop-shadow(0 10px 10px rgba(0,0,0,0.2)); opacity: 0; transform: rotate(15deg) scale(0.8); transition: all 800ms ease 100ms;' },
+                  { src: 'https://pngimg.com/uploads/chili_pepper/chili_pepper_PNG31.png', style: 'top: 8%; right: 18%; width: min(90px, 12vw); filter: blur(3px); opacity: 0; transform: rotate(-45deg) scale(0.8); transition: all 800ms ease 200ms;' },
+                  { src: 'https://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14087.png', style: 'bottom: 20%; left: 22%; width: min(120px, 15vw); filter: blur(2.5px); opacity: 0; transform: rotate(40deg) scale(0.8); transition: all 800ms ease 300ms;' }
               ]
             },
             { 
@@ -683,8 +699,10 @@
               title: 'SỐT PHÔ MAI',
               desc: 'Sốt phô mai nguyên bản đậm đà, thơm béo ngậy. Phủ hoàn hảo lên mọi món ăn, biến những bữa ăn thường ngày thành đại tiệc thực sự.',
               decors: [
-                  { src: './assets/images/usage-bread.png', style: 'top: 15%; right: 12%; width: min(140px, 18vw); filter: blur(3px); opacity: 0; transform: rotate(25deg) scale(0.8); transition: all 800ms ease;' },
-                  { src: './assets/images/products-idea-dip.png', style: 'bottom: 18%; left: 6%; width: min(200px, 28vw); filter: blur(4px); opacity: 0; transform: rotate(-10deg) scale(0.8); transition: all 800ms ease 100ms;' }
+                  { src: 'https://pngimg.com/uploads/cheese/cheese_PNG25310.png', style: 'top: 15%; right: 8%; width: min(150px, 18vw); filter: blur(1.5px) drop-shadow(0 10px 10px rgba(0,0,0,0.2)); opacity: 0; transform: rotate(25deg) scale(0.8); transition: all 800ms ease;' },
+                  { src: 'https://pngimg.com/uploads/bread/bread_PNG2262.png', style: 'bottom: 12%; left: 5%; width: min(220px, 28vw); filter: blur(1px) drop-shadow(0 10px 10px rgba(0,0,0,0.2)); opacity: 0; transform: rotate(-10deg) scale(0.8); transition: all 800ms ease 100ms;' },
+                  { src: 'https://pngimg.com/uploads/cheese/cheese_PNG25310.png', style: 'bottom: 30%; right: 25%; width: min(100px, 12vw); filter: blur(3px); opacity: 0; transform: rotate(-15deg) scale(0.8); transition: all 800ms ease 200ms;' },
+                  { src: 'https://pngimg.com/uploads/bread/bread_PNG2262.png', style: 'top: 10%; left: 20%; width: min(110px, 14vw); filter: blur(2.5px); opacity: 0; transform: rotate(30deg) scale(0.8); transition: all 800ms ease 300ms;' }
               ]
             },
             { 
@@ -693,8 +711,10 @@
               title: 'SỐT TRỨNG MUỐI',
               desc: 'Vị mặn mặn bùi bùi đặc trưng của trứng muối tinh tuyển hoà quyện cùng kết cấu sánh mịn. Lựa chọn tuyệt vời cho các tín đồ sành ăn.',
               decors: [
-                  { src: './assets/images/usage-seafood.png', style: 'top: 25%; left: 10%; width: min(160px, 22vw); filter: blur(4px); opacity: 0; transform: rotate(-15deg) scale(0.8); transition: all 800ms ease;' },
-                  { src: './assets/images/products-idea-salad.png', style: 'bottom: 12%; right: 8%; width: min(190px, 26vw); filter: blur(3px); opacity: 0; transform: rotate(10deg) scale(0.8); transition: all 800ms ease 100ms;' }
+                  { src: 'https://pngimg.com/uploads/egg/egg_PNG2.png', style: 'top: 20%; left: 6%; width: min(150px, 20vw); filter: blur(1.5px) drop-shadow(0 10px 10px rgba(0,0,0,0.2)); opacity: 0; transform: rotate(-15deg) scale(0.8); transition: all 800ms ease;' },
+                  { src: 'https://pngimg.com/uploads/shrimps/shrimps_PNG18261.png', style: 'bottom: 12%; right: 5%; width: min(200px, 24vw); filter: blur(1px) drop-shadow(0 10px 10px rgba(0,0,0,0.2)); opacity: 0; transform: rotate(10deg) scale(0.8); transition: all 800ms ease 100ms;' },
+                  { src: 'https://pngimg.com/uploads/shrimps/shrimps_PNG18261.png', style: 'top: 8%; right: 20%; width: min(100px, 12vw); filter: blur(3px); opacity: 0; transform: rotate(-30deg) scale(0.8); transition: all 800ms ease 200ms;' },
+                  { src: 'https://pngimg.com/uploads/egg/egg_PNG2.png', style: 'bottom: 25%; left: 25%; width: min(90px, 10vw); filter: blur(2.5px); opacity: 0; transform: rotate(45deg) scale(0.8); transition: all 800ms ease 300ms;' }
               ]
             }
         ];
@@ -774,7 +794,7 @@
                     img.style.cssText = decor.style + ' position: absolute; z-index: 5;';
                     decorsContainer.appendChild(img);
                     setTimeout(() => {
-                        img.style.opacity = '0.6'; 
+                        img.style.opacity = '0.9'; 
                         img.style.transform = img.style.transform.replace('scale(0.8)', 'scale(1)');
                     }, 50);
                 });
@@ -807,10 +827,22 @@
             });
         }
 
-        function toonhubNavigate(direction) {
+        let toonhubAutoSlideInterval;
+        function toonhubStartAutoSlide() {
+            clearInterval(toonhubAutoSlideInterval);
+            toonhubAutoSlideInterval = setInterval(() => {
+                toonhubNavigate('next', true);
+            }, 3500);
+        }
+
+        function toonhubNavigate(direction, isAuto = false) {
             if (toonhubIsAnimating) return;
             toonhubIsAnimating = true;
             
+            if (!isAuto) {
+                toonhubStartAutoSlide();
+            }
+
             if (direction === 'next') {
                 toonhubActiveIndex = (toonhubActiveIndex + 1) % 3;
             } else {
@@ -838,8 +870,8 @@
         }, { passive: true });
         
         toonhubWrapper.addEventListener('mousedown', e => {
-            // Ignore if clicking on a button or link
             if (e.target.closest('a') || e.target.closest('button')) return;
+            e.preventDefault();
             toonhubIsDragging = true;
             toonhubTouchStartX = e.clientX;
             toonhubWrapper.style.cursor = 'grabbing';
@@ -847,7 +879,16 @@
         
         toonhubWrapper.addEventListener('mousemove', e => {
             if (!toonhubIsDragging) return;
+            e.preventDefault();
         });
+
+        toonhubWrapper.addEventListener('touchmove', e => {
+            if (!toonhubTouchStartX) return;
+            const diffX = Math.abs(e.changedTouches[0].screenX - toonhubTouchStartX);
+            if (diffX > 15) {
+                e.preventDefault();
+            }
+        }, { passive: false });
         
         toonhubWrapper.addEventListener('mouseup', e => {
             if (!toonhubIsDragging) return;
@@ -865,7 +906,7 @@
         });
         
         function toonhubHandleSwipe() {
-            const threshold = 50;
+            const threshold = 30;
             const diff = toonhubTouchEndX - toonhubTouchStartX;
             
             if (diff > threshold) {
@@ -876,8 +917,7 @@
         }
 
         toonhubWrapper.style.cursor = 'grab';
-        toonhubUpdateDOM();
-
+        
         window.addEventListener('resize', () => {
             const currentIsMobile = window.innerWidth < 640;
             if (currentIsMobile !== toonhubIsMobile) {
@@ -886,8 +926,10 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', toonhubUpdateDOM);
-        toonhubUpdateDOM();
+        document.addEventListener('DOMContentLoaded', () => {
+            toonhubUpdateDOM();
+            toonhubStartAutoSlide();
+        });
 
 
     </script>

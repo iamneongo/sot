@@ -158,9 +158,9 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 999px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -466,7 +466,7 @@ button {
   overflow: hidden;
   isolation: isolate;
   background-color: #fef3e8;
-  padding: 100px 0;
+  padding: 180px 0 100px;
   min-height: 750px;
   display: flex;
   align-items: center;
@@ -1479,10 +1479,18 @@ button {
 }
 
 .service-strip {
-  border-top: 1px solid rgba(239, 171, 84, 0.18);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 225, 184, 0.32), transparent 56%),
-    linear-gradient(180deg, #fff4e4 0%, #fff0dc 100%);
+  width: calc(100% - 32px);
+  max-width: 1100px;
+  margin: 32px auto;
+  border-radius: 20px;
+  border: none;
+  background: var(--color-accent);
+  box-shadow: 0 16px 32px rgba(255, 145, 29, 0.15);
+}
+
+.service-strip .container {
+  width: 100% !important;
+  padding: 0 20px;
 }
 
 .service-strip__list {
@@ -1500,7 +1508,7 @@ button {
   align-items: center;
   gap: 13px;
   min-width: 0;
-  color: #4c4036;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .service-strip__icon {
@@ -1508,7 +1516,7 @@ button {
   place-items: center;
   width: 30px;
   height: 30px;
-  color: #4b4239;
+  color: #ffffff;
 }
 
 .service-strip__icon svg {
@@ -1527,7 +1535,7 @@ button {
 }
 
 .service-strip__item strong {
-  color: #3c3129;
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.35;
@@ -1535,7 +1543,7 @@ button {
 
 .service-strip__item em {
   margin-top: 3px;
-  color: #66584a;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.83rem;
   font-style: normal;
   line-height: 1.35;
@@ -1600,6 +1608,8 @@ button {
 .faq__list {
   display: grid;
   gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .faq-item {
@@ -1854,7 +1864,7 @@ button {
 
   .navbar__inner {
     gap: 0.7rem;
-    min-height: 82px;
+    min-height: 60px;
     justify-content: space-between;
   }
 
@@ -2048,7 +2058,7 @@ button {
   }
 
   .hero {
-    padding: 48px 0;
+    padding: 160px 0 48px;
     min-height: auto;
     display: block;
   }
@@ -2329,20 +2339,10 @@ button {
   }
 
   .shop-cta__hero {
-    padding: 64px 0 220px;
+    padding: 64px 0 64px;
     background:
       linear-gradient(180deg, rgba(255, 253, 249, 0.9) 0%, rgba(255, 253, 249, 0.74) 50%, rgba(255, 247, 236, 0.42) 100%),
-      url("../images/cta-section-bg.png"),
       linear-gradient(180deg, #fffdf9 0%, #fff7ec 100%);
-    background-repeat: no-repeat;
-    background-position:
-      left top,
-      center bottom,
-      left top;
-    background-size:
-      100% 100%,
-      auto 240px,
-      100% 100%;
   }
 
   .shop-cta__image--food {
@@ -2533,7 +2533,6 @@ button {
   .shop-cta__hero {
     background-size:
       100% 100%,
-      auto 46%,
       100% 100%;
   }
 
@@ -2566,7 +2565,7 @@ button {
 @media (max-width: 980px) {
   .products-hero {
     scroll-margin-top: 90px;
-    padding: 120px 0 40px;
+    padding: 160px 0 40px;
     background:
       linear-gradient(90deg, rgba(255, 253, 249, 0.96) 0%, rgba(255, 250, 243, 0.9) 54%, rgba(255, 250, 243, 0.46) 100%),
       url("../images/products-hero-bg.png"),
@@ -2609,7 +2608,7 @@ button {
 @media (max-width: 760px) {
   .products-hero {
     min-height: 0;
-    padding: 100px 0 30px;
+    padding: 160px 0 30px;
     background:
       linear-gradient(90deg, rgba(255, 253, 249, 0.98) 0%, rgba(255, 250, 243, 0.88) 100%),
       url("../images/products-hero-bg.png"),
@@ -2708,7 +2707,7 @@ button {
 
 @media (max-width: 560px) {
   .products-hero {
-    padding: 34px 0;
+    padding: 160px 0 34px;
     background-size:
       100% 100%,
       auto 66%,
@@ -2763,7 +2762,7 @@ button {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.55rem;
-  padding: 26px 0 4px;
+  padding: 130px 0 4px;
   font-size: 0.9rem;
   color: var(--color-ink-soft);
 }
@@ -3092,9 +3091,18 @@ button {
 
 /* Tabs -------------------------------------------------------------------- */
 .product-tabs {
-  border-top: 1px solid rgba(239, 171, 84, 0.24);
-  border-bottom: 1px solid rgba(239, 171, 84, 0.24);
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: 32px auto;
+  border-radius: 40px;
+  border: 1px solid rgba(239, 171, 84, 0.24);
   background: rgba(255, 251, 244, 0.75);
+  padding: 0 24px;
+}
+
+.product-tabs .container {
+  width: 100% !important;
+  padding: 0;
 }
 
 .product-tabs__list {

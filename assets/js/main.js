@@ -145,20 +145,40 @@ const gallery = document.querySelector("[data-gallery]");
 
 if (gallery) {
   const mainImage = gallery.querySelector("[data-gallery-main]");
-  const thumbs = gallery.querySelectorAll("[data-gallery-thumb]");
+  const thumbs = Array.from(gallery.querySelectorAll("[data-gallery-thumb]"));
+  let intervalId;
+  let currentIndex = thumbs.findIndex(t => t.classList.contains("is-active"));
+  if (currentIndex === -1) currentIndex = 0;
 
-  thumbs.forEach((thumb) => {
+  const setActiveThumb = (index) => {
+    const thumb = thumbs[index];
+    const src = thumb.getAttribute("data-gallery-thumb");
+    if (!src || !mainImage) return;
+
+    mainImage.src = src;
+    thumbs.forEach((item) => item.classList.remove("is-active"));
+    thumb.classList.add("is-active");
+    currentIndex = index;
+  };
+
+  const startAutoSlide = () => {
+    clearInterval(intervalId);
+    intervalId = setInterval(() => {
+      let nextIndex = (currentIndex + 1) % thumbs.length;
+      setActiveThumb(nextIndex);
+    }, 3500);
+  };
+
+  thumbs.forEach((thumb, index) => {
     thumb.addEventListener("click", () => {
-      const src = thumb.getAttribute("data-gallery-thumb");
-      if (!src || !mainImage) {
-        return;
-      }
-
-      mainImage.src = src;
-      thumbs.forEach((item) => item.classList.remove("is-active"));
-      thumb.classList.add("is-active");
+      setActiveThumb(index);
+      startAutoSlide(); // Reset timer on user interaction
     });
   });
+
+  if (thumbs.length > 1) {
+    startAutoSlide();
+  }
 }
 
 const quantity = document.querySelector("[data-quantity]");
@@ -189,13 +209,6 @@ const tabsBar = document.querySelector("[data-tabs]");
 if (tabsBar) {
   const tabs = tabsBar.querySelectorAll("[data-tab]");
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((item) => item.classList.remove("is-active"));
-      tab.classList.add("is-active");
-    });
-  });
-
   const sections = Array.from(tabs)
     .map((tab) => {
       const id = (tab.getAttribute("href") || "").replace("#", "");
@@ -204,28 +217,28 @@ if (tabsBar) {
     })
     .filter(Boolean);
 
-  if ("IntersectionObserver" in window && sections.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
+  const updateTabs = (activeTab) => {
+    tabs.forEach((item) => item.classList.remove("is-active"));
+    activeTab.classList.add("is-active");
 
-          const match = sections.find((item) => item.section === entry.target);
-          if (!match) {
-            return;
-          }
+    sections.forEach(({ tab, section }) => {
+      if (tab === activeTab) {
+        section.style.display = "";
+      } else {
+        section.style.display = "none";
+      }
+    });
+  };
 
-          tabs.forEach((item) => item.classList.remove("is-active"));
-          match.tab.classList.add("is-active");
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-    );
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", (e) => {
+      e.preventDefault();
+      updateTabs(tab);
+    });
+  });
 
-    sections.forEach((item) => observer.observe(item.section));
-  }
+  const initialActive = Array.from(tabs).find(t => t.classList.contains("is-active")) || tabs[0];
+  if (initialActive) updateTabs(initialActive);
 }
 
 if (window.jQuery && jQuery.fn.owlCarousel) {
