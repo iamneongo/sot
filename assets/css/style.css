@@ -1479,44 +1479,52 @@ button {
 }
 
 .service-strip {
-  width: calc(100% - 32px);
-  max-width: 1100px;
-  margin: 32px auto;
-  border-radius: 20px;
-  border: none;
-  background: var(--color-accent);
-  box-shadow: 0 16px 32px rgba(255, 145, 29, 0.15);
+  width: 100%;
+  margin: 40px 0;
+  background: transparent;
 }
 
 .service-strip .container {
-  width: 100% !important;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 .service-strip__list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   margin: 0;
-  padding: 19px 0;
+  padding: 0;
   list-style: none;
 }
 
 .service-strip__item {
-  display: grid;
-  grid-template-columns: 34px 1fr;
+  display: flex;
   align-items: center;
-  gap: 13px;
-  min-width: 0;
-  color: rgba(255, 255, 255, 0.9);
+  gap: 16px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  color: var(--color-ink-soft);
+}
+
+.service-strip__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(255, 145, 29, 0.12);
 }
 
 .service-strip__icon {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  color: #ffffff;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 145, 29, 0.12);
+  color: var(--color-accent-deep);
+  font-size: 22px;
 }
 
 .service-strip__icon svg {
@@ -1535,18 +1543,17 @@ button {
 }
 
 .service-strip__item strong {
-  color: #ffffff;
-  font-size: 0.9rem;
+  color: var(--color-ink);
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .service-strip__item em {
-  margin-top: 3px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.83rem;
+  margin-top: 6px;
+  font-size: 0.85rem;
   font-style: normal;
-  line-height: 1.35;
+  color: var(--color-ink-soft);
 }
 
 .section-kicker {
@@ -1708,9 +1715,10 @@ button {
   align-items: center;
   gap: 15px;
   padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--color-border);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.12);
+  background: #ffffff;
+  box-shadow: 0 4px 12px var(--color-shadow);
 }
 
 .contact-card__icon {
@@ -1719,8 +1727,8 @@ button {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
-  color: #fff;
+  background: rgba(255, 145, 29, 0.15);
+  color: var(--color-accent-deep);
 }
 
 .contact-card__icon svg {
@@ -1735,14 +1743,14 @@ button {
 
 .contact-card h3 {
   margin: 0;
-  color: #fff;
+  color: var(--color-ink);
   font-size: 1rem;
   font-weight: 600;
 }
 
 .contact-card p {
   margin: 0.3rem 0 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-ink-soft);
   font-size: 0.9rem;
   line-height: 1.45;
 }
@@ -2144,8 +2152,8 @@ button {
   }
 
   .service-strip__list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
@@ -2375,9 +2383,7 @@ button {
     min-width: 0;
   }
 
-  .service-strip__list {
-    padding: 18px 0;
-  }
+  /* service-strip padding removed */
 
   .faq__inner {
     gap: 1.4rem;
@@ -2538,12 +2544,11 @@ button {
 
   .service-strip__list {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
+    gap: 16px;
   }
 
   .service-strip__item {
-    grid-template-columns: 32px 1fr;
-    gap: 10px;
+    padding: 20px;
   }
 }
 

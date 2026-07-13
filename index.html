@@ -785,18 +785,37 @@
                 decorsContainer.style.cssText = 'position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: hidden;';
                 const toonhubContainer = document.getElementById('toonhub-container');
                 if (toonhubContainer) toonhubContainer.appendChild(decorsContainer);
-            }
-            decorsContainer.innerHTML = '';
-            if (currentProduct.decors) {
-                currentProduct.decors.forEach(decor => {
-                    const img = document.createElement('img');
-                    img.src = decor.src;
-                    img.style.cssText = decor.style + ' position: absolute; z-index: 5;';
-                    decorsContainer.appendChild(img);
-                    setTimeout(() => {
-                        img.style.opacity = '0.9'; 
-                        img.style.transform = img.style.transform.replace('scale(0.8)', 'scale(1)');
-                    }, 50);
+                
+                TOONHUB_IMAGES.forEach((prod, idx) => {
+                    const group = document.createElement('div');
+                    group.id = 'toonhub-decor-group-' + idx;
+                    group.style.cssText = 'position: absolute; inset: 0; transition: opacity 600ms ease, transform 600ms ease; pointer-events: none; opacity: ' + (idx === toonhubActiveIndex ? 1 : 0) + ';';
+                    if (prod.decors) {
+                        prod.decors.forEach((decor, dIdx) => {
+                            const wrapper = document.createElement('div');
+                            wrapper.style.cssText = decor.style + ' position: absolute; z-index: 5; will-change: transform;';
+                            const img = document.createElement('img');
+                            img.src = decor.src;
+                            img.style.cssText = 'width: 100%; height: auto; pointer-events: none;';
+                            img.classList.add(dIdx % 2 === 0 ? 'toonhub-anim-float-1' : 'toonhub-anim-float-2');
+                            wrapper.appendChild(img);
+                            group.appendChild(wrapper);
+                        });
+                    }
+                    decorsContainer.appendChild(group);
+                });
+            } else {
+                TOONHUB_IMAGES.forEach((prod, idx) => {
+                    const group = document.getElementById('toonhub-decor-group-' + idx);
+                    if (group) {
+                        if (idx === toonhubActiveIndex) {
+                            group.style.opacity = '1';
+                            group.style.transform = 'scale(1)';
+                        } else {
+                            group.style.opacity = '0';
+                            group.style.transform = 'scale(0.95)';
+                        }
+                    }
                 });
             }
             
