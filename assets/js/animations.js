@@ -64,19 +64,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 5. Staggered Grid Items (like products or blog posts)
-  const staggerContainers = document.querySelectorAll('.gsap-stagger-container, .about-values__list, .products-grid, .contact__cards');
+  const staggerContainers = document.querySelectorAll('.gsap-stagger-container, .about-values__list, .products-grid, .contact__cards, .uses-bento__grid, .uses-steps__track, .uses-list, .about-flow__list');
   staggerContainers.forEach(container => {
-    const items = container.querySelectorAll('.gsap-stagger-item, .about-value, .product-card, .contact-card');
+    const items = container.querySelectorAll('.gsap-stagger-item, .about-value, .product-card, .contact-card, .uses-tile, .uses-step, .uses-dish, .about-flow__step');
     if (items.length > 0) {
       gsap.from(items, {
         scrollTrigger: {
           trigger: container,
           start: 'top 85%',
         },
-        y: 40,
+        y: 50,
         opacity: 0,
-        duration: 0.6,
-        ease: 'power2.out',
+        duration: 0.8,
+        ease: 'power3.out',
         stagger: 0.15,
       });
     }
@@ -105,7 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
     '.faq__container',
     '.about-values__intro',
     '.contact-form',
-    '.map-card'
+    '.map-card',
+    '.section-heading',
+    '.uses-feature',
+    '.about-cta__text',
+    '.about-cta__media'
   ].join(', '));
   
   if (autoElements.length > 0) {
