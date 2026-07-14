@@ -1249,10 +1249,18 @@ button {
   flex: 0 0 auto;
 }
 
-.product-sort select {
+.custom-select {
+  position: relative;
+  user-select: none;
   min-width: 190px;
+}
+
+.custom-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: 42px;
-  padding: 0 2.5rem 0 1.15rem;
+  padding: 0 1.15rem;
   border: 1px solid rgba(214, 158, 86, 0.34);
   border-radius: var(--radius-pill);
   color: #4c4036;
@@ -1260,7 +1268,62 @@ button {
   font: inherit;
   font-size: 0.92rem;
   font-weight: 550;
-  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-select__trigger i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.custom-select.open .custom-select__trigger i {
+  transform: rotate(180deg);
+}
+
+.custom-select__options {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(214, 158, 86, 0.2);
+}
+
+.custom-select.open .custom-select__options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.custom-select__option {
+  padding: 10px 1.15rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #4c4036;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.custom-select__option:hover {
+  background: rgba(255, 145, 29, 0.08);
+}
+
+.custom-select__option.selected {
+  background: rgba(255, 145, 29, 0.12);
+  font-weight: 600;
+  color: var(--color-accent-deep);
 }
 
 .products-grid {
@@ -2658,7 +2721,7 @@ button {
   }
 
   .product-sort,
-  .product-sort select {
+  .custom-select {
     width: 100%;
   }
 
