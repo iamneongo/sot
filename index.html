@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sốt Trio Trứng Muối</title>
+    <!-- Preload first slide images to prevent lag -->
+    <link rel="preload" as="image" href="./assets/images/sot-pho-mai-cay-final.png">
+    <link rel="preload" as="image" href="./assets/images/bg_spicy_cheese.png">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
@@ -28,8 +31,10 @@
             position: relative;
             width: 100%;
             overflow: hidden;
-            transition: background-color 650ms cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: 'Geomanist', sans-serif;
+            background: #fff;
+            font-family: 'Baloo 2', 'Nunito', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, background-color 650ms cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
             -webkit-user-select: none;
         }
@@ -948,8 +953,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             toonhubUpdateDOM();
             toonhubStartAutoSlide();
+            toonhubWrapper.style.opacity = '1';
         });
-
 
     </script>
     
