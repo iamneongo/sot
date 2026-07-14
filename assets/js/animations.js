@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 5. Staggered Grid Items (like products or blog posts)
-  const staggerContainers = document.querySelectorAll('.gsap-stagger-container');
+  const staggerContainers = document.querySelectorAll('.gsap-stagger-container, .about-values__list, .products-grid, .contact__cards');
   staggerContainers.forEach(container => {
-    const items = container.querySelectorAll('.gsap-stagger-item');
+    const items = container.querySelectorAll('.gsap-stagger-item, .about-value, .product-card, .contact-card');
     if (items.length > 0) {
       gsap.from(items, {
         scrollTrigger: {
@@ -102,7 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     '.product-summary',
     '.product-info',
     '.products-toolbar',
-    '.faq__container'
+    '.faq__container',
+    '.about-values__intro',
+    '.contact-form',
+    '.map-card'
   ].join(', '));
   
   if (autoElements.length > 0) {
