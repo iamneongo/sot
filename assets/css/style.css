@@ -1081,6 +1081,7 @@ button {
 .shop-cta__image--food {
   overflow: hidden;
   border-radius: 14px;
+  border: 6px solid #ffffff;
   box-shadow: 0 14px 34px rgba(224, 157, 76, 0.11);
 }
 
