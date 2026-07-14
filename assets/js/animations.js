@@ -5,68 +5,65 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   gsap.registerPlugin(ScrollTrigger);
 
-  // Utility function to check if elements exist
+  // Utility function to apply animation individually to each element
   const initAnimation = (selector, config) => {
     const elements = document.querySelectorAll(selector);
-    if (elements.length > 0) {
-      gsap.from(elements, config);
-    }
+    elements.forEach(el => {
+      // Clone config so we don't mutate the original
+      const animationConfig = { ...config };
+      animationConfig.scrollTrigger = {
+        ...config.scrollTrigger,
+        trigger: el // Set the trigger to the specific element
+      };
+      gsap.from(el, animationConfig);
+    });
   };
 
   // 1. Fade Up Effect
   initAnimation('.gsap-fade-up', {
     scrollTrigger: {
-      trigger: '.gsap-fade-up',
       start: 'top 85%',
     },
     y: 50,
     opacity: 0,
     duration: 0.8,
     ease: 'power3.out',
-    stagger: 0.15,
   });
 
   // 2. Slide In Left
   initAnimation('.gsap-slide-left', {
     scrollTrigger: {
-      trigger: '.gsap-slide-left',
       start: 'top 85%',
     },
     x: -80,
     opacity: 0,
     duration: 0.8,
     ease: 'power3.out',
-    stagger: 0.2,
   });
 
   // 3. Slide In Right
   initAnimation('.gsap-slide-right', {
     scrollTrigger: {
-      trigger: '.gsap-slide-right',
       start: 'top 85%',
     },
     x: 80,
     opacity: 0,
     duration: 0.8,
     ease: 'power3.out',
-    stagger: 0.2,
   });
 
   // 4. Zoom / Scale In
   initAnimation('.gsap-scale', {
     scrollTrigger: {
-      trigger: '.gsap-scale',
       start: 'top 85%',
     },
     scale: 0.8,
     opacity: 0,
     duration: 1,
     ease: 'back.out(1.5)',
-    stagger: 0.2,
   });
 
   // 5. Staggered Grid Items (like products or blog posts)
-  // Add .gsap-stagger-container to the grid, and .gsap-stagger-item to children
   const staggerContainers = document.querySelectorAll('.gsap-stagger-container');
   staggerContainers.forEach(container => {
     const items = container.querySelectorAll('.gsap-stagger-item');
@@ -80,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         duration: 0.6,
         ease: 'power2.out',
-        stagger: 0.1,
+        stagger: 0.15,
       });
     }
   });
@@ -88,14 +85,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Flip In 3D (for featured cards)
   initAnimation('.gsap-flip', {
     scrollTrigger: {
-      trigger: '.gsap-flip',
       start: 'top 85%',
     },
     rotationY: 90,
     opacity: 0,
     duration: 0.8,
     ease: 'power3.out',
-    stagger: 0.2,
     transformOrigin: '50% 50%',
   });
+
+  // 7. Auto-animate common sections that might lack classes
+  const autoElements = document.querySelectorAll([
+    '.about-story__text',
+    '.about-quote__inner',
+    '.product-gallery',
+    '.product-summary',
+    '.product-info',
+    '.products-toolbar',
+    '.faq__container'
+  ].join(', '));
+  
+  if (autoElements.length > 0) {
+    autoElements.forEach(el => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+    });
+  }
 });
