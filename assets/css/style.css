@@ -4108,6 +4108,16 @@ button {
 
 .contact-form__submit {
   margin-top: 1.5rem;
+  background: #ffffff;
+  color: var(--color-accent-deep);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form__submit:hover,
+.contact-form__submit:focus-visible {
+  background: #fffaf3;
+  color: var(--color-accent-deep);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* Map placeholder card (Liên hệ) ------------------------------------------ */
