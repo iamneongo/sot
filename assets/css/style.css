@@ -5739,6 +5739,11 @@ button {
 }
 
 /* Final CTA — premium dark band --------------------------------------------- */
+.about-cta {
+  padding-top: clamp(3rem, 5vw, 5rem);
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+}
+
 .about-cta__inner {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
@@ -5747,7 +5752,9 @@ button {
   padding: clamp(2rem, 3.5vw, 3rem);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 36px;
-  background: radial-gradient(circle at top right, #3a2d24, var(--color-ink) 80%);
+  background: 
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(circle at top right, #3a2d24, var(--color-ink) 80%);
   box-shadow: 0 24px 54px rgba(0, 0, 0, 0.25);
 }
 
@@ -5789,7 +5796,8 @@ button {
 
 .about-cta__media img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
+  max-height: 320px;
   border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
