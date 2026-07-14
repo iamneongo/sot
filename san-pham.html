@@ -48,7 +48,7 @@
     <main class="products-page">
       <section class="products-hero" id="san-pham">
         <div class="container products-hero__inner">
-          <div class="products-hero__content">
+          <div class="products-hero__content gsap-fade-up">
             <h1>
               <span>Tất cả sản phẩm</span>
               <em>Khám phá trọn bộ sưu tập</em>
@@ -85,8 +85,8 @@
             </div>
           </div>
 
-          <div class="products-grid">
-            <article class="product-card">
+          <div class="products-grid gsap-stagger-container">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (1).png" alt="Gói xốt trứng muối nguyên bản" />
               </a>
@@ -96,7 +96,7 @@
               </div>
             </article>
 
-            <article class="product-card">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (2).png" alt="Gói xốt phô mai cay" />
               </a>
@@ -106,7 +106,7 @@
               </div>
             </article>
 
-            <article class="product-card">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (3).png" alt="Gói xốt phô mai mịn" />
               </a>
@@ -116,7 +116,7 @@
               </div>
             </article>
 
-            <article class="product-card">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (4).png" alt="Gói xốt trứng muối đậm vị" />
               </a>
@@ -126,7 +126,7 @@
               </div>
             </article>
 
-            <article class="product-card">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (5).png" alt="Gói xốt phô mai cho salad" />
               </a>
@@ -135,7 +135,7 @@
                 <p>Kết cấu nhẹ hơn, thơm béo, hợp với rau xanh.</p>
               </div>
             </article>
- <article class="product-card">
+ <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (1).png" alt="Gói xốt trứng muối nguyên bản" />
               </a>
@@ -145,7 +145,7 @@
               </div>
             </article>
 
-            <article class="product-card">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (2).png" alt="Gói xốt phô mai cay" />
               </a>
@@ -155,7 +155,7 @@
               </div>
             </article>
 
-            <article class="product-card">
+            <article class="product-card gsap-stagger-item">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (3).png" alt="Gói xốt phô mai mịn" />
               </a>
@@ -354,7 +354,7 @@
             const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price);
             
             const article = document.createElement('article');
-            article.className = 'product-card';
+            article.className = 'product-card gsap-stagger-item';
             article.innerHTML = `
               <a class="product-card__media" href="${product.link}" target="_blank" rel="noopener noreferrer">
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='./assets/images/product-tanzy-pho-mai.png'" />
@@ -412,5 +412,10 @@
         }
       });
     </script>
+  
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/animations.js"></script>
   </body>
 </html>

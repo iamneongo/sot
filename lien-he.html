@@ -48,7 +48,7 @@
     <main class="page-main">
       <section class="products-hero" id="lien-he">
         <div class="container products-hero__inner">
-          <div class="products-hero__content">
+          <div class="products-hero__content gsap-fade-up">
             <h1>
               <span>Liên hệ với chúng tôi</span>
               <em>Luôn sẵn sàng hỗ trợ bạn</em>
@@ -62,7 +62,7 @@
 
       <section class="contact section-padding" aria-label="Thông tin liên hệ">
         <div class="container contact__panel">
-          <form class="contact-form" aria-label="Gửi liên hệ" novalidate>
+          <form class="contact-form gsap-slide-left" aria-label="Gửi liên hệ" novalidate>
             <span class="section-kicker">Gửi liên hệ</span>
             <h2>Để lại lời nhắn cho chúng tôi</h2>
             <p class="contact-form__lead">
@@ -91,8 +91,8 @@
             <button class="button button--primary contact-form__submit" type="submit">Gửi lời nhắn</button>
           </form>
 
-          <div class="contact__cards" aria-label="Thông tin liên hệ">
-            <article class="contact-card">
+          <div class="contact__cards gsap-stagger-container" aria-label="Thông tin liên hệ">
+            <article class="contact-card gsap-stagger-item">
               <span class="contact-card__icon" aria-hidden="true">
                 <i class="fa-solid fa-phone"></i>
               </span>
@@ -102,7 +102,7 @@
               </div>
             </article>
 
-            <article class="contact-card">
+            <article class="contact-card gsap-stagger-item">
               <span class="contact-card__icon" aria-hidden="true">
                 <i class="fa-solid fa-envelope"></i>
               </span>
@@ -112,7 +112,7 @@
               </div>
             </article>
 
-            <article class="contact-card">
+            <article class="contact-card gsap-stagger-item">
               <span class="contact-card__icon" aria-hidden="true">
                 <i class="fa-solid fa-location-dot"></i>
               </span>
@@ -122,7 +122,7 @@
               </div>
             </article>
 
-            <article class="contact-card">
+            <article class="contact-card gsap-stagger-item">
               <span class="contact-card__icon" aria-hidden="true">
                 <i class="fa-solid fa-clock"></i>
               </span>
@@ -137,7 +137,7 @@
 
       <section class="map section-padding" aria-label="Bản đồ">
         <div class="container">
-          <div class="map-card" style="padding: 0; background: none;">
+          <div class="map-card gsap-scale" style="padding: 0; background: none;">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.508006450653!2d106.69837947573587!3d10.77234676081498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f40a3b49e59%3A0xa1bd14e483a602db!2sBen%20Thanh%20Market!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
               width="100%" 
@@ -205,5 +205,10 @@
     </footer>
 
     <script src="./assets/js/main.js"></script>
+  
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/animations.js"></script>
   </body>
 </html>
