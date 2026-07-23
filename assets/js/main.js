@@ -26,6 +26,9 @@ if (header) {
 }
 
 if (header && menuToggle && navigation) {
+  // Move nav to body so position:fixed works independently of header stacking context
+  document.body.appendChild(navigation);
+
   const body = document.body;
   const brand = header.querySelector(".brand");
   const menuToggleLabel = menuToggle.querySelector(".sr-only");
@@ -93,12 +96,14 @@ if (header && menuToggle && navigation) {
 
   const closeMenu = () => {
     header.classList.remove("is-menu-open");
+    navigation.classList.remove("is-menu-open");
     syncToggleState(false);
     unlockScroll();
   };
 
   const openMenu = () => {
     header.classList.add("is-menu-open");
+    navigation.classList.add("is-menu-open");
     syncToggleState(true);
 
     if (isMobileMenu()) {
