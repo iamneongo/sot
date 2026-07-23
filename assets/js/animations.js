@@ -71,13 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.from(items, {
         scrollTrigger: {
           trigger: container,
-          start: 'top 85%',
+          start: 'top 90%',
         },
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7,
         ease: 'power3.out',
-        stagger: 0.15,
+        stagger: 0.1,
+        immediateRender: false,
       });
     }
   });

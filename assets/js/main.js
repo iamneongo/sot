@@ -2,6 +2,29 @@ const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navigation = document.querySelector("#primary-navigation");
 
+// Hide the header when scrolling down, reveal it (slide down) when scrolling up.
+if (header) {
+  let lastY = window.scrollY;
+  const revealThreshold = 6; // ignore tiny scroll jitter
+  const onScroll = () => {
+    const y = window.scrollY;
+    // Never hide while the mobile menu overlay is open.
+    if (header.classList.contains("is-menu-open")) {
+      lastY = y;
+      return;
+    }
+    if (y <= 80) {
+      header.classList.remove("is-hidden"); // always show near the top
+    } else if (y > lastY + revealThreshold) {
+      header.classList.add("is-hidden"); // scrolling down
+    } else if (y < lastY - revealThreshold) {
+      header.classList.remove("is-hidden"); // scrolling up
+    }
+    lastY = y;
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
 if (header && menuToggle && navigation) {
   const body = document.body;
   const brand = header.querySelector(".brand");

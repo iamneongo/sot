@@ -64,11 +64,11 @@
         <div class="container">
           <div class="products-toolbar">
             <div class="product-filters" aria-label="Bộ lọc sản phẩm">
-              <button class="filter-pill filter-pill--active" type="button">Tất cả</button>
-              <button class="filter-pill" type="button">Sốt chấm</button>
-              <button class="filter-pill" type="button">Sốt trộn</button>
-              <button class="filter-pill" type="button">Combo</button>
-              <button class="filter-pill" type="button">Best seller</button>
+              <button class="filter-pill filter-pill--active" type="button" data-filter="all">Tất cả</button>
+              <button class="filter-pill" type="button" data-filter="sot-cham">Sốt chấm</button>
+              <button class="filter-pill" type="button" data-filter="sot-tron">Sốt trộn</button>
+              <button class="filter-pill" type="button" data-filter="combo">Combo</button>
+              <button class="filter-pill" type="button" data-filter="bestseller">Best seller</button>
             </div>
 
             <div class="product-sort custom-select" id="sort-select">
@@ -86,7 +86,7 @@
           </div>
 
           <div class="products-grid gsap-stagger-container">
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="sot-cham bestseller">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (1).png" alt="Gói xốt trứng muối nguyên bản" />
               </a>
@@ -96,7 +96,7 @@
               </div>
             </article>
 
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="sot-cham bestseller">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (2).png" alt="Gói xốt phô mai cay" />
               </a>
@@ -106,7 +106,7 @@
               </div>
             </article>
 
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="sot-tron">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (3).png" alt="Gói xốt phô mai mịn" />
               </a>
@@ -116,7 +116,7 @@
               </div>
             </article>
 
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="sot-cham">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (4).png" alt="Gói xốt trứng muối đậm vị" />
               </a>
@@ -126,7 +126,7 @@
               </div>
             </article>
 
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="sot-tron bestseller">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
                 <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (5).png" alt="Gói xốt phô mai cho salad" />
               </a>
@@ -135,33 +135,34 @@
                 <p>Kết cấu nhẹ hơn, thơm béo, hợp với rau xanh.</p>
               </div>
             </article>
- <article class="product-card gsap-stagger-item">
+
+            <article class="product-card gsap-stagger-item" data-category="combo bestseller">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
-                <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (1).png" alt="Gói xốt trứng muối nguyên bản" />
+                <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (1).png" alt="Combo sốt đôi" />
               </a>
               <div class="product-card__body">
-                <h2>Sốt Trứng Muối Nguyên Bản</h2>
-                <p>Vị truyền thống, béo ngậy, thơm lừng trứng muối.</p>
+                <h2>Combo Sốt Đôi</h2>
+                <p>Một nguyên bản, một phô mai cay — đủ vị cho cả nhà.</p>
               </div>
             </article>
 
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="combo">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
-                <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (2).png" alt="Gói xốt phô mai cay" />
+                <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (2).png" alt="Combo gia đình" />
               </a>
               <div class="product-card__body">
-                <h2>Xốt Phô Mai Cay</h2>
-                <p>Thêm chút cay nồng, kích thích vị giác cực cuốn.</p>
+                <h2>Combo Gia Đình</h2>
+                <p>Tiết kiệm hơn khi mua bộ 3 vị yêu thích.</p>
               </div>
             </article>
 
-            <article class="product-card gsap-stagger-item">
+            <article class="product-card gsap-stagger-item" data-category="sot-tron">
               <a class="product-card__media" href="./chi-tiet-san-pham.html">
-                <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (3).png" alt="Gói xốt phô mai mịn" />
+                <img src="./assets/images/ChatGPT Image Jul 8, 2026, 03_21_01 PM (3).png" alt="Xốt Trộn Rau Củ" />
               </a>
               <div class="product-card__body">
-                <h2>Xốt Phô Mai Mịn</h2>
-                <p>Béo hơn, mịn hơn, đậm đà hơn cho tín đồ béo.</p>
+                <h2>Xốt Trộn Rau Củ</h2>
+                <p>Nhẹ nhàng, thanh mát, hợp với mọi loại salad.</p>
               </div>
             </article>
 
@@ -170,7 +171,7 @@
           <div class="product-promises" aria-label="Cam kết sản phẩm">
             <article class="product-promise">
               <span aria-hidden="true">
-                <i class="fa-solid fa-egg"></i>
+                <img class="icon-3d" src="./assets/images/icons/egg.png" alt="" loading="lazy" />
               </span>
               <strong>100%</strong>
               <em>Trứng muối thật</em>
@@ -178,7 +179,7 @@
 
             <article class="product-promise">
               <span aria-hidden="true">
-                <i class="fa-solid fa-leaf"></i>
+                <img class="icon-3d" src="./assets/images/icons/leaf.png" alt="" loading="lazy" />
               </span>
               <strong>Không</strong>
               <em>Chất bảo quản</em>
@@ -186,7 +187,7 @@
 
             <article class="product-promise">
               <span aria-hidden="true">
-                <i class="fa-solid fa-thumbs-up"></i>
+                <img class="icon-3d" src="./assets/images/icons/thumbs-up.png" alt="" loading="lazy" />
               </span>
               <strong>Thơm ngon</strong>
               <em>Chuẩn vị</em>
@@ -194,7 +195,7 @@
 
             <article class="product-promise">
               <span aria-hidden="true">
-                <i class="fa-solid fa-shield-halved"></i>
+                <img class="icon-3d" src="./assets/images/icons/shield.png" alt="" loading="lazy" />
               </span>
               <strong>An toàn</strong>
               <em>Cho mọi nhà</em>
@@ -236,52 +237,6 @@
           
         </div>
       </section>
-
-      <div class="service-strip">
-        <div class="container">
-          <ul class="service-strip__list" aria-label="Dịch vụ">
-            <li class="service-strip__item">
-              <span class="service-strip__icon" aria-hidden="true">
-                <i class="fa-solid fa-truck-fast"></i>
-              </span>
-              <span>
-                <strong>Miễn phí giao hàng</strong>
-                <em>Đơn từ 299k</em>
-              </span>
-            </li>
-
-            <li class="service-strip__item">
-              <span class="service-strip__icon" aria-hidden="true">
-                <i class="fa-solid fa-rotate-left"></i>
-              </span>
-              <span>
-                <strong>Đổi trả dễ dàng</strong>
-                <em>Trong 7 ngày</em>
-              </span>
-            </li>
-
-            <li class="service-strip__item">
-              <span class="service-strip__icon" aria-hidden="true">
-                <i class="fa-solid fa-wallet"></i>
-              </span>
-              <span>
-                <strong>Thanh toán khi nhận hàng</strong>
-                <em>COD toàn quốc</em>
-              </span>
-            </li>
-
-            <li class="service-strip__item">
-              <span class="service-strip__icon" aria-hidden="true">
-                <i class="fa-solid fa-headset"></i>
-              </span>
-              <span>
-                <strong>Tư vấn nhiệt tình</strong>
-                <em>09:00 - 21:00 mỗi ngày</em>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
     </main>
 
     <footer class="site-footer">
@@ -413,6 +368,34 @@
       });
     </script>
   
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var pills = document.querySelectorAll('.filter-pill[data-filter]');
+        var cards = document.querySelectorAll('.product-card[data-category]');
+
+        pills.forEach(function (pill) {
+          pill.addEventListener('click', function () {
+            pills.forEach(function (p) { p.classList.remove('filter-pill--active'); });
+            pill.classList.add('filter-pill--active');
+
+            var filter = pill.getAttribute('data-filter');
+            cards.forEach(function (card) {
+              var cats = card.getAttribute('data-category') || '';
+              var show = filter === 'all' || cats.split(' ').includes(filter);
+              if (show) {
+                card.style.display = '';
+                card.style.opacity = '1';
+                card.style.transform = 'none';
+                card.style.visibility = 'visible';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        });
+      });
+    </script>
+
     <!-- GSAP Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
