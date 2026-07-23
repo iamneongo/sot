@@ -3355,6 +3355,56 @@ button {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
 }
 
+/* Tab article -------------------------------------------------------------- */
+.tab-article {
+  max-width: 720px;
+  line-height: 1.8;
+  color: var(--color-ink);
+}
+
+.tab-article p {
+  margin: 0 0 1rem;
+}
+
+.tab-article ul {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+}
+
+.tab-article li {
+  margin-bottom: 0.5rem;
+}
+
+.tab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.tab-table th,
+.tab-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(239, 171, 84, 0.18);
+  vertical-align: top;
+}
+
+.tab-table th {
+  width: 38%;
+  font-weight: 600;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.tab-table td {
+  color: var(--color-ink-light);
+}
+
+.tab-table tr:last-child th,
+.tab-table tr:last-child td {
+  border-bottom: none;
+}
+
 /* Description -------------------------------------------------------------- */
 .product-description__inner {
   display: grid;
