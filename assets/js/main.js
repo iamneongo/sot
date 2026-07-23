@@ -26,9 +26,6 @@ if (header) {
 }
 
 if (header && menuToggle && navigation) {
-  // Move nav to body so position:fixed works independently of header stacking context
-  document.body.appendChild(navigation);
-
   const body = document.body;
   const brand = header.querySelector(".brand");
   const menuToggleLabel = menuToggle.querySelector(".sr-only");
