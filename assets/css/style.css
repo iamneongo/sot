@@ -2644,7 +2644,7 @@ button {
   .nav {
     width: min(88vw, 320px);
     padding: calc(16px + env(safe-area-inset-top)) 0.9rem 1.15rem;
-    border-radius: 26px 0 0 26px;
+    border-radius: 0;
   }
 
   .nav__mobile-brand img {
